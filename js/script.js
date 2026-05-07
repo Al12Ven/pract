@@ -1,0 +1,1 @@
+// const fpoisk = document.querySelector

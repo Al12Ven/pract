@@ -1,0 +1,76 @@
+.head{
+    background-color: rgb(19, 7, 51);
+    color: darkseagreen;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* z-index: 1000; */
+}
+.head container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    position: fixed;
+    font-size: 18px;
+    font-weight: bold;
+    color:rgb(0, 225, 255);
+    top: 30px;
+    left: 50px;
+    /* width: 25%;
+    height: 37%; */
+}
+.nav-menu{
+    position:fixed;
+    top: 15px;
+    right: 37px;
+    width: 50%;
+    height: 25%;
+    /* display: flex;
+    flex-direction:row;
+    justify-content:right; */
+}
+.nav-menu ul li{
+    display: inline;
+    padding: 8px;
+
+}
+.nav-menu ul li a{
+    color: aqua;
+
+}
+
+
+main {
+    width: 100%;
+    height: 100%;
+    padding-top: 3%;          
+}
+
+
+.glav{
+    width: 100%;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+.cel{
+    width: 100%;
+    height: 20%;
+    background-color: rgba(52, 104, 87, 0.109);
+    font-size: 18px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.dev{
+    width: 100%;
+    height: 40%;
+    background-color: blanchedalmond;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
