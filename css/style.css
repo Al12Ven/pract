@@ -74,3 +74,28 @@ main {
     font-family: 'Times New Roman', Times, serif;
 }
 
+/* .btn-primary {
+display: inline-block;
+padding: 10px 20px;
+background-color: #3498db;
+color: white;
+text-decoration: none;
+border-radius: 4px;
+font-family: Arial, sans-serif;
+cursor: pointer; 
+} */
+
+.btn-primary {
+display: inline-block;
+/* padding: 10px 20px; */
+background-color: #4CAF50;
+color: white;
+text-decoration: none;
+border-radius: 4px;
+font-family: Arial, sans-serif;
+font-size: 16px;
+}
+
+.btn-primary:hover {
+background-color: #45a049;
+}

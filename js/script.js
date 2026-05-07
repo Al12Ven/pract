@@ -1,1 +1,4 @@
-// const fpoisk = document.querySelector
+
+function openwindow(){
+    window.open('search.html')
+}
