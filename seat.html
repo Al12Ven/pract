@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Выбор дома | Alone at home</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' href='css/style.css'>
 </head>
 <body>
   <header>
     <div class="container head">
       <a href="index.html" class="logo">🌲 Alone at home</a>
-      <nav><ul><li><a href="index.html#promo">Акции</a></li><li><a href="index.html#search">Поиск</a></li><li><a href="booking.html">Управление</a></li></ul></nav>
+      <nav>
+        <ul>
+          <li><a href="index.html#promo">Акции</a></li>
+          <li><a href="index.html#search">Поиск</a></li>
+          <li><a href="booking.html">Управление</a></li>
+        </ul>
+      </nav>
       <div class="burger"><span></span><span></span><span></span></div>
     </div>
   </header>
@@ -19,7 +25,7 @@
     <section>
       <div class="container">
         <h2>Схема кемпинга «Тихая заводь»</h2>
-        <p style="text-align:center; margin-bottom:10px; color:#666;">🟢 Свободен | 🔴 Занят | Нажмите для выбора</p>
+        <p class="hint">🟢 Свободен | 🔴 Занят | Нажмите для выбора</p>
         
         <div class="map">
           <div class="barrel free">Дом №3</div>
@@ -30,20 +36,20 @@
           <div class="barrel busy">Дом №9</div>
         </div>
 
-        <div style="text-align:center;">
-          <button id="openModalBtn" class="btn btn-orange">Забронировать выбранный дом</button>
+        <div class="text-center">
+          <button id="openModal" class="btn btn-orange">Забронировать выбранный дом</button>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- МОДАЛЬНОЕ ОКНО -->
+  <!-- Модальное окно -->
   <div id="bookingModal" class="modal">
     <div class="modal-box">
       <span class="modal-close">&times;</span>
       <h3>Информация о доме (из booking.txt)</h3>
-      <p id="modalText" style="margin:15px 0; font-style:italic;"></p>
-      <button id="agreeBtn" class="btn btn-green">Согласен, перейти к оформлению</button>
+      <p id="modalInfo" class="modal-info"></p>
+      <button id="agreeBtn" class="btn btn-green w-100">Согласен, перейти к оформлению</button>
     </div>
   </div>
 

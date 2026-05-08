@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Поиск | Alone at home</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' href='css/style.css'>
 </head>
 <body>
   <header>
     <div class="container head">
       <a href="index.html" class="logo">🌲 Alone at home</a>
-      <nav><ul><li><a href="index.html#promo">Акции</a></li><li><a href="index.html#search">Поиск</a></li><li><a href="booking.html">Управление</a></li></ul></nav>
+      <nav>
+        <ul>
+          <li><a href="index.html#promo">Акции</a></li>
+          <li><a href="index.html#search">Поиск</a></li>
+          <li><a href="booking.html">Управление</a></li>
+        </ul>
+      </nav>
       <div class="burger"><span></span><span></span><span></span></div>
     </div>
   </header>
@@ -18,8 +24,8 @@
   <main>
     <section>
       <div class="container">
-        <h2>Найденные кемпинги</h2>
-        <p style="margin-bottom:20px; color:#666;">Регион: Чувашская Республика | Даты: 20.05 – 25.05.2024</p>
+        <h2>Результаты поиска</h2>
+        <p class="hint">Регион: Чувашская Республика | Даты: 20.05 – 25.05.2024</p>
         
         <div class="card">
           <div>
@@ -27,7 +33,7 @@
             <p>📍 Чебоксарский р-н, д. Сосновка</p>
             <p>Свободно домов-бочек: <b>4</b></p>
           </div>
-          <label><input type="radio" name="camp" value="quiet"> Выбрать</label>
+          <label><input type="radio" name="camp" value="1"> Выбрать</label>
         </div>
 
         <div class="card">
@@ -36,10 +42,10 @@
             <p>📍 Мариинско-Посадский р-н</p>
             <p>Свободно домов-бочек: <b>7</b></p>
           </div>
-          <label><input type="radio" name="camp" value="forest"> Выбрать</label>
+          <label><input type="radio" name="camp" value="2"> Выбрать</label>
         </div>
 
-        <div style="text-align:center; margin-top:30px;">
+        <div class="text-center mt-15">
           <a href="seat.html" class="btn btn-green">Перейти к выбору дома →</a>
         </div>
       </div>

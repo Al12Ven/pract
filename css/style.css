@@ -1,95 +1,419 @@
-/* 1. СБРОС СТИЛЕЙ - запомни эту строку */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ========================
+   1. СБРОС И БАЗА
+   ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* 2. БАЗОВЫЕ СТИЛИ */
-body { font-family: sans-serif; background: #f5f5f5; color: #333; line-height: 1.5; }
-.container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f8fafc;
+  color: #334155;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
-section { padding: 30px 0; }
-h2 { text-align: center; margin-bottom: 20px; color: #2e7d32; }
+img { max-width: 100%; display: block; }
 
-/* 3. КНОПКИ И ПОЛЯ */
-.btn { display: inline-block; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; color: #fff; font-size: 16px; }
-.btn-green { background: #2e7d32; }
-.btn-green:hover { background: #256528; }
-.btn-orange { background: #ff9800; }
-.btn-orange:hover { background: #e68900; }
+/* ========================
+   2. КОНТЕЙНЕР И СЕКЦИИ
+   ======================== */
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
 
-input, select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; font-size: 16px; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+section {
+  padding: 36px 0;
+}
 
-/* 4. ШАПКА */
-header { background: #130733; color: #c8e6c9; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
-.head { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 20px; font-weight: bold; color: #00e1ff; }
-nav ul { display: flex; gap: 20px; }
-nav a { color: aqua; }
-nav a:hover { text-decoration: underline; }
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #0f766e;
+}
 
-/* Бургер (скрыт на ПК) */
-.burger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
-.burger span { width: 25px; height: 3px; background: aqua; }
+/* ========================
+   3. ШАПКА И НАВИГАЦИЯ
+   ======================== */
+header {
+  background: #0f172a;
+  color: #fff;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
 
-/* 5. СЛАЙДЕР */
-.slider { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; text-align: center; }
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2dd4bf;
+}
+
+nav ul {
+  display: flex;
+  gap: 22px;
+}
+
+nav a {
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover { color: #2dd4bf; }
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ========================
+   4. КНОПКИ И ФОРМЫ
+   ======================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover { filter: brightness(1.1); }
+.btn:active { transform: scale(0.98); }
+
+.btn-green { background: #0f766e; }
+.btn-orange { background: #f59e0b; color: #0f172a; }
+
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15,118,110,0.15);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* ========================
+   5. КОМПОНЕНТЫ
+   ======================== */
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 12px;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.step {
+  background: #fff;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 1 110px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.3s; }
+.step:nth-child(4) { animation-delay: 0.4s; }
+.step:nth-child(5) { animation-delay: 0.5s; }
+.step:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Слайдер */
+.slider {
+  max-width: 580px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
 .slide { display: none; }
-.slide.active { display: block; }
-.dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-.dot { width: 10px; height: 10px; background: #ccc; border-radius: 50%; cursor: pointer; }
-.dot.active { background: #ff9800; }
+.slide.active { display: block; animation: slideIn 0.3s ease; }
 
-/* 6. ШАГИ (инфографика) */
-.steps { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.step { background: #fff; padding: 15px; border-radius: 8px; text-align: center; flex: 1; min-width: 120px; opacity: 0; animation: fade 0.5s forwards; }
-.step:nth-child(2){animation-delay:.1s} .step:nth-child(3){animation-delay:.2s}
-.step:nth-child(4){animation-delay:.3s} .step:nth-child(5){animation-delay:.4s}
-.step:nth-child(6){animation-delay:.5s}
-@keyframes fade { to { opacity: 1; } }
+@keyframes slideIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* 7. КАРТОЧКИ (акции, кемпинги) */
-.card { background: #fff; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
-.promos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-.promo { background: #fff; padding: 15px; border-radius: 8px; }
-.img-box { height: 120px; background: #e0e0e0; border-radius: 5px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: #666; }
-
-/* 8. КАРТА ДОМОВ */
-.map { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin: 20px 0; }
-.barrel { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; font-weight: bold; text-align: center; }
-.barrel.free { background: #8bc34a; color: #fff; }
-.barrel.busy { background: #ccc; color: #777; cursor: not-allowed; }
-.barrel.selected { border: 3px solid #ff9800; transform: scale(1.1); }
-
-/* 9. МОДАЛЬНОЕ ОКНО */
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 200; }
-.modal-box { background: #fff; padding: 25px; border-radius: 10px; text-align: center; max-width: 400px; width: 90%; position: relative; }
-.modal-close { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; }
-
-/* 10. БРОНИРОВАНИЕ */
-.guest { background: #fff; padding: 15px; margin-bottom: 10px; border: 1px dashed #999; border-radius: 5px; position: relative; }
-.remove-guest { position: absolute; top: 5px; right: 10px; color: red; cursor: pointer; font-weight: bold; }
-.total { font-size: 20px; font-weight: bold; text-align: right; margin: 15px 0; color: #2e7d32; }
-
-/* 11. ПОДВАЛ */
-footer { background: #222; 
-    color: #fff; 
-    padding: 30px 0; 
-    margin-top: 30px; 
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
 }
-.foot { display: flex; 
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    gap: 20px; 
+
+.dot {
+  width: 10px; height: 10px;
+  background: #94a3b8;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
 }
-.phone { font-size: 20px; color: #ff9800; }
-.foot-links a { display: block; margin: 5px 0; color: #ccc; }
+
+.dot.active { background: #f59e0b; transform: scale(1.3); }
+
+/* Акции */
+.promos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.promo-img {
+  height: 130px;
+  background: #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 28px;
+}
+
+/* Карта домов */
+.map {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.barrel {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8rem;
+  transition: 0.2s;
+  border: 2px solid transparent;
+}
+
+.barrel.free { background: #34d399; color: #fff; }
+.barrel.busy { background: #cbd5e1; color: #94a3b8; cursor: not-allowed; }
+.barrel.selected { border-color: #f59e0b; transform: scale(1.12); box-shadow: 0 0 10px rgba(245,158,11,0.4); }
+
+/* Модалка */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15,23,42,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px; right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+}
+
+.modal-info {
+  margin: 14px 0;
+  font-style: italic;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Бронирование */
+.guest-block {
+  background: #fff;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px dashed #94a3b8;
+  border-radius: 8px;
+  position: relative;
+}
+
+.remove-guest {
+  position: absolute;
+  top: 6px; right: 12px;
+  color: #ef4444;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.services-list label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.total-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: right;
+  margin: 16px 0;
+  color: #0f766e;
+}
+
+/* Подвал */
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 28px 0;
+  margin-top: auto;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.phone {
+  font-size: 1.2rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.foot-links a {
+  display: block;
+  margin: 4px 0;
+  color: #94a3b8;
+  transition: 0.2s;
+}
+
 .foot-links a:hover { color: #fff; }
 
-/* 12. АДАПТИВ (запомни этот блок!) */
+/* ========================
+   6. УТИЛИТЫ
+   ======================== */
+.text-center { text-align: center; }
+.w-100 { width: 100%; }
+.mt-8 { margin-top: 8px; }
+.mt-15 { margin-top: 15px; }
+.search-wrap { max-width: 520px; margin: 0 auto; }
+.sub-form { max-width: 360px; margin: 0 auto; display: flex; gap: 8px; }
+.sub-form input { flex: 1; }
+.hint { text-align: center; margin-bottom: 12px; color: #64748b; }
+.btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+.footer-copy { margin-top: 8px; color: #64748b; font-size: 0.85rem; }
+
+/* ========================
+   7. АДАПТИВ (МОБИЛЬНЫЕ)
+   ======================== */
 @media (max-width: 768px) {
   .burger { display: flex; }
-  nav ul { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: #130733; flex-direction: column; padding: 80px 20px 20px; transition: 0.3s; }
+  
+  nav ul {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 85%; max-width: 320px;
+    height: 100vh;
+    background: #0f172a;
+    flex-direction: column;
+    padding: 80px 24px 24px;
+    transition: right 0.3s ease;
+    z-index: 99;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+  }
+  
   nav ul.open { right: 0; }
+  
   .grid { grid-template-columns: 1fr; }
-  .head { flex-wrap: wrap; }
+  
+  h2 { font-size: 1.5rem; }
+  
+  .foot { flex-direction: column; gap: 16px; }
 }

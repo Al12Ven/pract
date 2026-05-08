@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='css/style.css'>
   <title>Alone at home | Главная</title>
-  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ШАПКА -->
   <header>
     <div class="container head">
       <a href="index.html" class="logo">🌲 Alone at home</a>
@@ -26,10 +25,9 @@
   </header>
 
   <main>
-    <!-- ШАГИ БРОНИРОВАНИЯ -->
     <section>
       <div class="container">
-        <h2>Как забронировать</h2>
+        <h2>Как забронировать отдых</h2>
         <div class="steps">
           <div class="step">📅<br>Даты</div>
           <div class="step">👥<br>Гости</div>
@@ -41,26 +39,25 @@
       </div>
     </section>
 
-    <!-- О КОМПАНИИ + СЛАЙДЕР -->
     <section>
       <div class="container">
-        <div class="card" style="text-align:center; background:#e8f5e9;">
+        <div class="card text-center">
           <h3>Наша цель</h3>
-          <p>Сделать уединённый отдых максимально комфортным и безопасным.</p>
-          <p><i>«Комфортно для Вас – безопасно для общества»</i></p>
+          <p>Сделать уединенный отдых максимально комфортным и безопасным.</p>
+          <p style="margin-top: 8px; font-style: italic;">«Комфортно для Вас – безопасно для общества»</p>
         </div>
 
-        <h2>Отзывы гостей</h2>
+        <h2 class="mt-15">Отзывы клиентов</h2>
         <div class="slider">
           <div class="slide active">
-            <h4>Иван И. | 10.05.2024</h4>
-            <p>"Отличное место для отдыха! Чисто, уютно, сервис на высоте."</p>
-            <p>👍 Полезно: 45 человек</p>
+            <h4>Иванов И.И. | 10.05.2024</h4>
+            <p>"Прекрасное место для перезагрузки. Чистый воздух, уютный дом!"</p>
+            <p class="mt-8">👍 Полезно: 42 человека</p>
           </div>
           <div class="slide">
-            <h4>Мария П. | 12.05.2024</h4>
+            <h4>Петрова А.С. | 02.05.2024</h4>
             <p>"Брали с родителями. Медицинское сопровождение очень помогло."</p>
-            <p>👍 Полезно: 32 человека</p>
+            <p class="mt-8">👍 Полезно: 38 человек</p>
           </div>
           <div class="dots">
             <span class="dot active"></span>
@@ -70,12 +67,11 @@
       </div>
     </section>
 
-    <!-- ФОРМА ПОИСКА -->
     <section id="search">
       <div class="container">
         <h2>Поиск кемпинга</h2>
-        <div class="card" style="max-width:600px; margin:0 auto;">
-          <form id="searchForm">
+        <div class="card search-wrap">
+          <form action="search.html">
             <div class="grid">
               <select name="region" required>
                 <option value="">Выберите регион</option>
@@ -87,57 +83,54 @@
               <input type="date" name="checkout" required>
               <input type="number" name="guests" min="1" max="5" value="2" required>
             </div>
-            <button type="submit" class="btn btn-green" style="width:100%">🔍 Найти</button>
+            <button type="submit" class="btn btn-green w-100">🔍 Поиск</button>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- АКЦИИ -->
     <section id="promo">
       <div class="container">
-        <h2>Акции</h2>
+        <h2>Актуальные акции</h2>
         <div class="promos">
-          <div class="promo">
-            <div class="img-box">🌿 Эко-выходные</div>
+          <div class="card">
+            <div class="promo-img">🌿</div>
             <h3>Скидка 15% на будни</h3>
             <p>Проведите уикенд на природе со скидкой.</p>
-            <a href="#" class="btn btn-orange" style="margin-top:10px; display:inline-block">Подробнее</a>
+            <a href="#" class="btn btn-orange mt-8">Подробнее</a>
           </div>
-          <div class="promo">
-            <div class="img-box">👨‍👩‍👧 Семья</div>
+          <div class="card">
+            <div class="promo-img">👨‍👩‍👧</div>
             <h3>Дети до 7 лет бесплатно</h3>
-            <p>Питание и анимация включены в стоимость.</p>
-            <a href="#" class="btn btn-orange" style="margin-top:10px; display:inline-block">Подробнее</a>
+            <p>Питание и анимация включены.</p>
+            <a href="#" class="btn btn-orange mt-8">Подробнее</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ПОДПИСКА -->
     <section>
-      <div class="container" style="text-align:center">
+      <div class="container text-center">
         <h2>Подписка на закрытые акции</h2>
-        <form style="max-width:400px; margin:0 auto; display:flex; gap:10px;">
-          <input type="email" placeholder="Ваш Email" required style="flex:1">
+        <form class="sub-form mt-15">
+          <input type="email" placeholder="Ваш Email" required>
           <button type="submit" class="btn btn-orange">Подписаться</button>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- ПОДВАЛ -->
   <footer>
     <div class="container foot">
       <div>
         <div class="phone">📞 8 (800) 100-10-10</div>
-        <p style="margin-top:10px; color:#aaa;">© 2024 Alone at home</p>
+        <p class="footer-copy">© 2024 Alone at home</p>
       </div>
       <div class="foot-links">
         <a href="index.html">Главная</a>
         <a href="#search">Поиск</a>
         <a href="#promo">Акции</a>
-        <a href="booking.html">Управление бронированием</a>
+        <a href="booking.html">Управление</a>
       </div>
     </div>
   </footer>

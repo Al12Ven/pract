@@ -1,165 +1,103 @@
-// Ждём загрузки страницы
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // === 1. БУРГЕР-МЕНЮ ===
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Бургер-меню
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('nav ul');
-  if(burger) {
-    burger.onclick = function() {
-      nav.classList.toggle('open');
-    }
-  }
+  if (burger) burger.onclick = () => nav.classList.toggle('open');
 
-  // === 2. СЛАЙДЕР ОТЗЫВОВ ===
+  // 2. Слайдер отзывов
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
-  let current = 0;
-  
-  function showSlide(n) {
+  let cur = 0;
+  const showSlide = (n) => {
     slides.forEach(s => s.classList.remove('active'));
     dots.forEach(d => d.classList.remove('active'));
     slides[n].classList.add('active');
     dots[n].classList.add('active');
-    current = n;
-  }
-  
-  if(dots.length > 0) {
-    dots.forEach((dot, i) => {
-      dot.onclick = function() { showSlide(i); }
-    });
-    // Автопереключение каждые 4 секунды
-    setInterval(function() {
-      showSlide((current + 1) % slides.length);
-    }, 4000);
+    cur = n;
+  };
+  if (dots.length) {
+    dots.forEach((d, i) => d.onclick = () => showSlide(i));
+    setInterval(() => showSlide((cur + 1) % slides.length), 5000);
   }
 
-  // === 3. ВЫБОР ДОМА + МОДАЛКА ===
+  // 3. Выбор дома + Модальное окно
   const barrels = document.querySelectorAll('.barrel.free');
   const modal = document.getElementById('bookingModal');
-  let selectedBarrel = null;
+  let chosen = null;
 
-  // Клик по дому
-  barrels.forEach(barrel => {
-    barrel.onclick = function() {
-      barrels.forEach(b => b.classList.remove('selected'));
-      this.classList.add('selected');
-      selectedBarrel = this.textContent.trim();
-    }
+  barrels.forEach(b => b.onclick = function() {
+    barrels.forEach(x => x.classList.remove('selected'));
+    this.classList.add('selected');
+    chosen = this.textContent.trim();
   });
 
-  // Эмуляция booking.txt (данные о домах)
-  const bookingInfo = {
-    'Дом №3': 'Уютный дом-бочка. 2 спальных места, душ, туалет, мини-кухня.',
-    'Дом №5': 'Просторный дом с террасой. 3 места, камин, панорамные окна.',
-    'Дом №8': 'Стандартный комфорт. 2 места, отопление, Wi-Fi.'
+  // Эмуляция booking.txt (для локального запуска без CORS)
+  const barrelData = {
+    'Дом №3': 'Уютный дом-бочка. 2 спальных места, душ, мини-кухня, отопление.',
+    'Дом №5': 'Просторный дом с террасой. 3 места, камин, панорамные окна, Wi-Fi.',
+    'Дом №8': 'Стандартный комфорт. 2 места, санузел внутри, мини-холодильник.'
   };
 
-  // Открытие модалки
-  const openModalBtn = document.getElementById('openModalBtn');
-  const modalText = document.getElementById('modalText');
+  const openBtn = document.getElementById('openModal');
+  const modalText = document.getElementById('modalInfo');
   const agreeBtn = document.getElementById('agreeBtn');
 
-  if(openModalBtn) {
-    openModalBtn.onclick = function() {
-      if(!selectedBarrel) {
-        alert('Пожалуйста, выберите свободный дом-бочку!');
-        return;
-      }
-      modalText.textContent = bookingInfo[selectedBarrel] || 'Информация о доме.';
-      modal.style.display = 'flex';
-    }
-  }
+  if (openBtn) openBtn.onclick = () => {
+    if (!chosen) return alert('Пожалуйста, выберите свободный дом-бочку!');
+    modalText.textContent = barrelData[chosen] || 'Информация о доме загружена.';
+    modal.style.display = 'flex';
+  };
 
-  // Закрытие модалки
-  if(modal) {
-    modal.onclick = function(e) {
-      if(e.target === modal) {
-        modal.style.display = 'none';
-      }
-    }
-    document.querySelector('.modal-close').onclick = function() {
-      modal.style.display = 'none';
-    }
+  if (modal) {
+    modal.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+    document.querySelector('.modal-close').onclick = () => modal.style.display = 'none';
   }
+  if (agreeBtn) agreeBtn.onclick = () => window.location.href = 'booking.html';
 
-  // Переход к бронированию
-  if(agreeBtn) {
-    agreeBtn.onclick = function() {
-      window.location.href = 'booking.html';
-    }
-  }
-
-  // === 4. БРОНИРОВАНИЕ: ДОБАВЛЕНИЕ ГОСТЕЙ ===
-  const addGuestBtn = document.getElementById('addGuestBtn');
+  // 4. Бронирование: гости + расчёт цены
+  const addBtn = document.getElementById('addGuest');
   const guestsList = document.getElementById('guestsList');
-  const basePrice = 4500; // цена за человека в сутки
+  const totalEl = document.getElementById('totalCost');
+  const pricePerGuest = 4500;
+  const servicePrice = 300;
 
-  function calculateTotal() {
-    const guestCount = guestsList.querySelectorAll('.guest').length;
-    let serviceCost = 0;
-    
-    // Считаем услуги
-    document.querySelectorAll('.service-check').forEach(checkbox => {
-      if(checkbox.checked) serviceCost += 300; // +300₽ за услугу на человека
-    });
-    
-    const total = guestCount * (basePrice + serviceCost);
-    document.getElementById('totalPrice').textContent = total.toLocaleString('ru-RU') + ' ₽';
-  }
+  const calcTotal = () => {
+    const count = guestsList.querySelectorAll('.guest-block').length;
+    let srv = 0;
+    document.querySelectorAll('.srv-check').forEach(c => { if (c.checked) srv += servicePrice; });
+    totalEl.textContent = (count * (pricePerGuest + srv)).toLocaleString('ru-RU') + ' ₽';
+  };
 
-  if(addGuestBtn) {
-    addGuestBtn.onclick = function() {
-      // Создаём блок для нового гостя
-      const guestDiv = document.createElement('div');
-      guestDiv.className = 'guest';
-      guestDiv.innerHTML = `
-        <span class="remove-guest">✕</span>
-        <div class="grid">
-          <input type="text" placeholder="Фамилия" required>
-          <input type="text" placeholder="Имя" required>
-          <input type="text" placeholder="Отчество">
-          <input type="date" required>
-          <input type="text" placeholder="Номер документа" required>
-        </div>
-      `;
-      guestsList.appendChild(guestDiv);
-      calculateTotal();
-      
-      // Добавляем удаление для нового гостя
-      guestDiv.querySelector('.remove-guest').onclick = function() {
-        if(guestsList.querySelectorAll('.guest').length > 1) {
-          guestDiv.remove();
-          calculateTotal();
-        }
-      }
-    }
-  }
+  if (addBtn) addBtn.onclick = () => {
+    const div = document.createElement('div');
+    div.className = 'guest-block';
+    div.innerHTML = `
+      <span class="remove-guest">✕</span>
+      <div class="grid">
+        <input type="text" placeholder="Фамилия" required>
+        <input type="text" placeholder="Имя" required>
+        <input type="text" placeholder="Отчество">
+        <input type="date" required>
+        <input type="text" placeholder="Номер документа" required>
+      </div>`;
+    guestsList.appendChild(div);
+    div.querySelector('.remove-guest').onclick = () => {
+      if (guestsList.querySelectorAll('.guest-block').length > 1) { div.remove(); calcTotal(); }
+    };
+    calcTotal();
+  };
 
-  // Удаление гостей (для уже существующих)
   document.querySelectorAll('.remove-guest').forEach(btn => {
     btn.onclick = function() {
-      if(guestsList.querySelectorAll('.guest').length > 1) {
-        this.closest('.guest').remove();
-        calculateTotal();
+      if (guestsList.querySelectorAll('.guest-block').length > 1) {
+        this.closest('.guest-block').remove(); calcTotal();
       }
-    }
+    };
   });
+  document.querySelectorAll('.srv-check').forEach(c => c.onchange = calcTotal);
+  calcTotal();
 
-  // Пересчёт при изменении услуг
-  document.querySelectorAll('.service-check').forEach(checkbox => {
-    checkbox.onchange = calculateTotal;
-  });
-
-  // Первый расчёт
-  calculateTotal();
-
-  // === 5. ОТПРАВКА ФОРМЫ ПОИСКА ===
-  const searchForm = document.getElementById('searchForm');
-  if(searchForm) {
-    searchForm.onsubmit = function(e) {
-      e.preventDefault(); // Отменяем стандартную отправку
-      // В реальном проекте тут был бы AJAX, но для олимпиады просто переход:
-      window.location.href = 'search.html';
-    }
-  }
+  // 5. Форма поиска (переход без перезагрузки)
+  const searchForm = document.querySelector('form[action="search.html"]');
+  if (searchForm) searchForm.onsubmit = e => { e.preventDefault(); window.location.href = 'search.html'; };
 });
