@@ -1,29 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поиск | Alone at home</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-        <header class="head">
-        <div class="container">
-                <div class="logo">Alone at home</div>
-    <div class="nav-menu">
-        <ul>
-        <li><a href="index.html">Главная страница</a></li>
-        <li><a href="search.html">Поиск кемпингов</a></li>
-        <li><a href="seat.html">Выбор дома из свободных</a></li>
-        <li><a href="booking.html">Бронирование</a></li>
-    </ul>
+  <header>
+    <div class="container head">
+      <a href="index.html" class="logo">🌲 Alone at home</a>
+      <nav><ul><li><a href="index.html#promo">Акции</a></li><li><a href="index.html#search">Поиск</a></li><li><a href="booking.html">Управление</a></li></ul></nav>
+      <div class="burger"><span></span><span></span><span></span></div>
     </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2>Найденные кемпинги</h2>
+        <p style="margin-bottom:20px; color:#666;">Регион: Чувашская Республика | Даты: 20.05 – 25.05.2024</p>
+        
+        <div class="card">
+          <div>
+            <h3>Кемпинг «Тихая заводь»</h3>
+            <p>📍 Чебоксарский р-н, д. Сосновка</p>
+            <p>Свободно домов-бочек: <b>4</b></p>
+          </div>
+          <label><input type="radio" name="camp" value="quiet"> Выбрать</label>
         </div>
-    </header>
-    <main>
-        <div class="region"></div>
-    </main>
-    
-        <script src="js/script.js"></script>
+
+        <div class="card">
+          <div>
+            <h3>Эко-база «Лесная поляна»</h3>
+            <p>📍 Мариинско-Посадский р-н</p>
+            <p>Свободно домов-бочек: <b>7</b></p>
+          </div>
+          <label><input type="radio" name="camp" value="forest"> Выбрать</label>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+          <a href="seat.html" class="btn btn-green">Перейти к выбору дома →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="phone">📞 8 (800) 100-10-10</div>
+      <div class="foot-links"><a href="index.html">Главная</a></div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
 </body>
 </html>

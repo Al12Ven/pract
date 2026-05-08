@@ -1,26 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бронирование | Alone at home</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-        <header class="head">
-        <div class="container">
-                <div class="logo">Alone at home</div>
-    <div class="nav-menu">
-        <ul>
-        <li><a href="index.html">Главная страница</a></li>
-        <li><a href="search.html">Поиск кемпингов</a></li>
-        <li><a href="seat.html">Выбор дома из свободных</a></li>
-        <li><a href="booking.html">Бронирование</a></li>
-    </ul>
+  <header>
+    <div class="container head">
+      <a href="index.html" class="logo">🌲 Alone at home</a>
+      <nav><ul><li><a href="index.html#promo">Акции</a></li><li><a href="index.html#search">Поиск</a></li><li><a href="booking.html">Управление</a></li></ul></nav>
+      <div class="burger"><span></span><span></span><span></span></div>
     </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2>Оформление бронирования</h2>
+        
+        <!-- Данные заказа -->
+        <div class="card">
+          <h3>Данные заказа</h3>
+          <p>Регион: Чувашская Республика | Кемпинг: Тихая заводь</p>
+          <p>Даты: 20.05.2024 – 25.05.2024 | Дом-бочка: №3</p>
+          <p>Базовая стоимость: 4 500 ₽/чел/сутки</p>
         </div>
-    </header>
-    
-        <script src="js/script.js"></script>
+
+        <!-- Гости -->
+        <div class="card">
+          <h3>Данные постояльцев <button id="addGuestBtn" class="btn btn-green" style="padding:5px 10px; font-size:14px;">+ Добавить</button></h3>
+          <div id="guestsList">
+            <div class="guest">
+              <span class="remove-guest">✕</span>
+              <div class="grid">
+                <input type="text" placeholder="Фамилия" required>
+                <input type="text" placeholder="Имя" required>
+                <input type="text" placeholder="Отчество">
+                <input type="date" required>
+                <input type="text" placeholder="Номер документа" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Услуги -->
+        <div class="card">
+          <h3>Дополнительные услуги</h3>
+          <label><input type="checkbox" class="service-check"> Медицинское сопровождение (+300 ₽/чел)</label><br>
+          <label><input type="checkbox" class="service-check"> Курьерские услуги (+300 ₽/чел)</label><br>
+          <label><input type="checkbox" class="service-check"> Питание (+300 ₽/чел)</label>
+        </div>
+
+        <!-- Итого -->
+        <div class="total">Итого: <span id="totalPrice">4 500 ₽</span></div>
+        <button class="btn btn-orange" style="width:100%">Оформить бронирование</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="phone">📞 8 (800) 100-10-10</div>
+      <div class="foot-links"><a href="index.html">Главная</a></div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
 </body>
 </html>

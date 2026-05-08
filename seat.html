@@ -1,26 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор дома | Alone at home</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-        <header class="head">
-        <div class="container">
-                <div class="logo">Alone at home</div>
-    <div class="nav-menu">
-        <ul>
-        <li><a href="index.html">Главная страница</a></li>
-        <li><a href="search.html">Поиск кемпингов</a></li>
-        <li><a href="seat.html">Выбор дома из свободных</a></li>
-        <li><a href="booking.html">Бронирование</a></li>
-    </ul>
+  <header>
+    <div class="container head">
+      <a href="index.html" class="logo">🌲 Alone at home</a>
+      <nav><ul><li><a href="index.html#promo">Акции</a></li><li><a href="index.html#search">Поиск</a></li><li><a href="booking.html">Управление</a></li></ul></nav>
+      <div class="burger"><span></span><span></span><span></span></div>
     </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2>Схема кемпинга «Тихая заводь»</h2>
+        <p style="text-align:center; margin-bottom:10px; color:#666;">🟢 Свободен | 🔴 Занят | Нажмите для выбора</p>
+        
+        <div class="map">
+          <div class="barrel free">Дом №3</div>
+          <div class="barrel busy">Дом №4</div>
+          <div class="barrel free">Дом №5</div>
+          <div class="barrel busy">Дом №6</div>
+          <div class="barrel free">Дом №8</div>
+          <div class="barrel busy">Дом №9</div>
         </div>
-    </header>
-    
-        <script src="js/script.js"></script>
+
+        <div style="text-align:center;">
+          <button id="openModalBtn" class="btn btn-orange">Забронировать выбранный дом</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- МОДАЛЬНОЕ ОКНО -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-box">
+      <span class="modal-close">&times;</span>
+      <h3>Информация о доме (из booking.txt)</h3>
+      <p id="modalText" style="margin:15px 0; font-style:italic;"></p>
+      <button id="agreeBtn" class="btn btn-green">Согласен, перейти к оформлению</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container foot">
+      <div class="phone">📞 8 (800) 100-10-10</div>
+      <div class="foot-links"><a href="index.html">Главная</a></div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
 </body>
 </html>

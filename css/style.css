@@ -1,101 +1,95 @@
-.head{
-    background-color: rgb(19, 7, 51);
-    color: darkseagreen;
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    top: 0;
-    left: 0;
-    right: 0;
-    /* z-index: 1000; */
-}
-.head container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.logo{
-    position: fixed;
-    font-size: 18px;
-    font-weight: bold;
-    color:rgb(0, 225, 255);
-    top: 30px;
-    left: 50px;
-    /* width: 25%;
-    height: 37%; */
-}
-.nav-menu{
-    position:fixed;
-    top: 15px;
-    right: 37px;
-    width: 50%;
-    height: 25%;
-    /* display: flex;
-    flex-direction:row;
-    justify-content:right; */
-}
-.nav-menu ul li{
-    display: inline;
-    padding: 8px;
+/* 1. СБРОС СТИЛЕЙ - запомни эту строку */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* 2. БАЗОВЫЕ СТИЛИ */
+body { font-family: sans-serif; background: #f5f5f5; color: #333; line-height: 1.5; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+section { padding: 30px 0; }
+h2 { text-align: center; margin-bottom: 20px; color: #2e7d32; }
+
+/* 3. КНОПКИ И ПОЛЯ */
+.btn { display: inline-block; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; color: #fff; font-size: 16px; }
+.btn-green { background: #2e7d32; }
+.btn-green:hover { background: #256528; }
+.btn-orange { background: #ff9800; }
+.btn-orange:hover { background: #e68900; }
+
+input, select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; font-size: 16px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+
+/* 4. ШАПКА */
+header { background: #130733; color: #c8e6c9; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+.head { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 20px; font-weight: bold; color: #00e1ff; }
+nav ul { display: flex; gap: 20px; }
+nav a { color: aqua; }
+nav a:hover { text-decoration: underline; }
+
+/* Бургер (скрыт на ПК) */
+.burger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
+.burger span { width: 25px; height: 3px; background: aqua; }
+
+/* 5. СЛАЙДЕР */
+.slider { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; text-align: center; }
+.slide { display: none; }
+.slide.active { display: block; }
+.dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.dot { width: 10px; height: 10px; background: #ccc; border-radius: 50%; cursor: pointer; }
+.dot.active { background: #ff9800; }
+
+/* 6. ШАГИ (инфографика) */
+.steps { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.step { background: #fff; padding: 15px; border-radius: 8px; text-align: center; flex: 1; min-width: 120px; opacity: 0; animation: fade 0.5s forwards; }
+.step:nth-child(2){animation-delay:.1s} .step:nth-child(3){animation-delay:.2s}
+.step:nth-child(4){animation-delay:.3s} .step:nth-child(5){animation-delay:.4s}
+.step:nth-child(6){animation-delay:.5s}
+@keyframes fade { to { opacity: 1; } }
+
+/* 7. КАРТОЧКИ (акции, кемпинги) */
+.card { background: #fff; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
+.promos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+.promo { background: #fff; padding: 15px; border-radius: 8px; }
+.img-box { height: 120px; background: #e0e0e0; border-radius: 5px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: #666; }
+
+/* 8. КАРТА ДОМОВ */
+.map { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin: 20px 0; }
+.barrel { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; font-weight: bold; text-align: center; }
+.barrel.free { background: #8bc34a; color: #fff; }
+.barrel.busy { background: #ccc; color: #777; cursor: not-allowed; }
+.barrel.selected { border: 3px solid #ff9800; transform: scale(1.1); }
+
+/* 9. МОДАЛЬНОЕ ОКНО */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 200; }
+.modal-box { background: #fff; padding: 25px; border-radius: 10px; text-align: center; max-width: 400px; width: 90%; position: relative; }
+.modal-close { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; }
+
+/* 10. БРОНИРОВАНИЕ */
+.guest { background: #fff; padding: 15px; margin-bottom: 10px; border: 1px dashed #999; border-radius: 5px; position: relative; }
+.remove-guest { position: absolute; top: 5px; right: 10px; color: red; cursor: pointer; font-weight: bold; }
+.total { font-size: 20px; font-weight: bold; text-align: right; margin: 15px 0; color: #2e7d32; }
+
+/* 11. ПОДВАЛ */
+footer { background: #222; 
+    color: #fff; 
+    padding: 30px 0; 
+    margin-top: 30px; 
 }
-.nav-menu ul li a{
-    color: aqua;
-
+.foot { display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    gap: 20px; 
 }
+.phone { font-size: 20px; color: #ff9800; }
+.foot-links a { display: block; margin: 5px 0; color: #ccc; }
+.foot-links a:hover { color: #fff; }
 
-
-main {
-    width: 100%;
-    height: 100%;
-    padding-top: 3%;          
-}
-
-
-.glav{
-    width: 100%;
-    height: 100%;
-    /* background-color: aqua; */
-}
-
-.cel{
-    width: 100%;
-    height: 20%;
-    background-color: rgba(52, 104, 87, 0.109);
-    font-size: 18px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-}
-
-.dev{
-    width: 100%;
-    height: 40%;
-    background-color: blanchedalmond;
-    font-size: 18px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-/* .btn-primary {
-display: inline-block;
-padding: 10px 20px;
-background-color: #3498db;
-color: white;
-text-decoration: none;
-border-radius: 4px;
-font-family: Arial, sans-serif;
-cursor: pointer; 
-} */
-
-.btn-primary {
-display: inline-block;
-/* padding: 10px 20px; */
-background-color: #4CAF50;
-color: white;
-text-decoration: none;
-border-radius: 4px;
-font-family: Arial, sans-serif;
-font-size: 16px;
-}
-
-.btn-primary:hover {
-background-color: #45a049;
+/* 12. АДАПТИВ (запомни этот блок!) */
+@media (max-width: 768px) {
+  .burger { display: flex; }
+  nav ul { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: #130733; flex-direction: column; padding: 80px 20px 20px; transition: 0.3s; }
+  nav ul.open { right: 0; }
+  .grid { grid-template-columns: 1fr; }
+  .head { flex-wrap: wrap; }
 }
